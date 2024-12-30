@@ -1,0 +1,34 @@
+{
+  "config": {
+    "title": "Vitesy Home Assistant Integration",
+    "step": {
+      "user": {
+        "title": "Set up Vitesy Integration",
+        "description": "Enter your Vitesy API key and configure settings",
+        "data": {
+          "api_key": "API Key",
+          "polling_interval": "Update interval (seconds)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to Vitesy API",
+      "invalid_auth": "Invalid API key",
+      "unknown": "Unexpected error occurred"
+    },
+    "abort": {
+      "already_configured": "This Vitesy account is already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Vitesy Options",
+        "description": "Configure Vitesy integration settings",
+        "data": {
+          "polling_interval": "Update interval (seconds)"
+        }
+      }
+    }
+  }
+}
