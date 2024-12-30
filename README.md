@@ -40,21 +40,14 @@ This integration allows you to integrate your Vitesy air purifiers with Home Ass
 
 ## Supported Devices
 
-- List your supported Vitesy devices here
+- Vitesy Shelfy
 
 ## Available Entities
 
 ### Sensors
-- Air Quality
 - Temperature
-- Humidity
 - Battery Level
-- Filter Status
-
-### Controls
-- Power On/Off
-- Operation Mode
-- Fan Speed
+- Door Openings
 
 ## API Key
 
