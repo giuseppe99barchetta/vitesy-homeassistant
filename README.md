@@ -15,7 +15,7 @@ This integration allows you to integrate your Vitesy air purifiers with Home Ass
 
 ### Manual Installation
 
-1. Copy the `vitesy` folder from this repository to your Home Assistant's `custom_components` directory
+1. Copy the content of this repository into a new `vitesy` folder in your Home Assistant's `custom_components` directory
 2. Restart Home Assistant
 
 ## Configuration
