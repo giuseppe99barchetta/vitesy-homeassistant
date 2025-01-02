@@ -13,18 +13,6 @@ This integration allows you to integrate your Vitesy air purifiers with Home Ass
 
 ## Installation
 
-### HACS (Recommended)
-
-1. Open HACS in your Home Assistant instance
-2. Click on "Integrations"
-3. Click the three dots in the top right corner
-4. Select "Custom repositories"
-5. Add this repository URL and select "Integration" as the category
-6. Click "Add"
-7. Search for "Vitesy" in HACS
-8. Click "Install"
-9. Restart Home Assistant
-
 ### Manual Installation
 
 1. Copy the `vitesy` folder from this repository to your Home Assistant's `custom_components` directory
