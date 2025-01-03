@@ -25,7 +25,6 @@ from .const import (
     MAX_POLLING_INTERVAL,
 )
 from vitesy.client import VitesyClient
-from vitesy.exceptions import VitesyAuthError, VitesyConnectionError
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -71,10 +70,6 @@ async def validate_input(hass: HomeAssistant, data: dict[str, Any]) -> dict[str,
         if not devices:
             _LOGGER.warning("No Vitesy devices found")
             
-    except VitesyAuthError as err:
-        raise InvalidAuth from err
-    except VitesyConnectionError as err:
-        raise CannotConnect from err
     except Exception as err:
         _LOGGER.exception("Unexpected error occurred")
         raise CannotConnect from err
