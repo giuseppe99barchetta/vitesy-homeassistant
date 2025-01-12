@@ -40,7 +40,8 @@ This integration allows you to integrate your Vitesy air purifiers with Home Ass
 ## API Key
 
 To obtain your Vitesy API key:
-1. Log in to your Vitesy account at https://admin.vitesy.com/login
+1. Log in to your Vitesy account at 
+2. Open https://dashboard.vitesy.com/
 2. Generate or copy your API key
 
 ## Troubleshooting
