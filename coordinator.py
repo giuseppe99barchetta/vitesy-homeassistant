@@ -54,35 +54,32 @@ class VitesyCoordinator(DataUpdateCoordinator):
             self.api_connected = True
 
     async def async_update_data(self):
-        """Fetch data from API endpoint.
-
-        This is the place to pre-process the data to lookup tables
-        so entities can quickly look up their data.
-        """
         _LOGGER.debug("vitesy async_update_data has been called")
         try:
             devices = await self.hass.async_add_executor_job(self.api.get_devices)
             _LOGGER.debug(f"Devices: {devices}")
-            sensors = []
+            
             for device in devices:
-
-                # Get sensors from the last 1 hour in iso format
+                sensors = []  # spostato dentro il ciclo per resettare per ogni device
+                
                 data_in = await self.hass.async_add_executor_job(
                     self.api.query_measurements, device["id"], None, None, None, True
                 )
-                for sensor_data in data_in[0]["sensors_data"]:
-                    sensors.append(sensor_data)  # noqa: PERF402
-
-                for status_data in data_in[0]["status_data"]:
-                    sensors.append(status_data)  # noqa: PERF402
                 
-                _LOGGER.debug(f"Sensors: {sensors}")
+                if data_in and isinstance(data_in, list) and len(data_in) > 0:
+                    for sensor_data in data_in[0].get("sensors_data", []):
+                        sensors.append(sensor_data)
+                    for status_data in data_in[0].get("status_data", []):
+                        sensors.append(status_data)
+                else:
+                    _LOGGER.warning(f"Nessun dato per dispositivo {device['id']}")
+                
                 device["sensors"] = sensors
+                
+                _LOGGER.debug(f"Device {device['id']} sensors: {sensors}")
         except Exception as err:
-            # This will show entities as unavailable by raising UpdateFailed exception
             raise UpdateFailed(f"Error communicating with API: {err}") from err
-
-        # What is returned here is stored in self.data by the DataUpdateCoordinator
+    
         return VitesyAPIData(devices)
 
     def get_device_by_id(self, device_id: str):
