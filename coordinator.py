@@ -72,7 +72,7 @@ class VitesyCoordinator(DataUpdateCoordinator):
                     for status_data in data_in[0].get("status_data", []):
                         sensors.append(status_data)
                 else:
-                    _LOGGER.warning(f"Nessun dato per dispositivo {device['id']}")
+                    _LOGGER.warning(f"No data for device: {device['id']}")
                 
                 device["sensors"] = sensors
                 
