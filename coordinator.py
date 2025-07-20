@@ -60,7 +60,7 @@ class VitesyCoordinator(DataUpdateCoordinator):
             _LOGGER.debug(f"Devices: {devices}")
             
             for device in devices:
-                sensors = []  # spostato dentro il ciclo per resettare per ogni device
+                sensors = [] # List to hold sensor data for each device
                 
                 data_in = await self.hass.async_add_executor_job(
                     self.api.query_measurements, device["id"], None, None, None, True
